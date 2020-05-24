@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Shortlist Editor</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style type="text/css">
+        @import url('http://fonts.googleapis.com/css?family=Exo+2:300,400,400i,500,600,700,900');
+
+        * {
+            border-radius: 0 !important;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            border: none;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        textarea {
+            max-width: 300px;
+            min-height: 300px;
+        }
+
+        .small-control {
+            max-width: 200px;
+        }
+
+        .bg-info {
+            background: #fff;
+            color: #666;
+        }
+
+        .input-group-addon.beds {
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Shortlist settings</h1>
+                <p>Enter the criteria you want to use when searching for property.</p>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input class="form-control" id="name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="excludeTerms">Exclude listings containing the following terms (one term per line)</label>
+                        <p class="bg-info">Avoid using words with multiple meanings, such as "flat" which could mean either an apartment or a "flat" in the sense of a "flat" roof.</p>
+                        <textarea class="form-control" id="excludeTerms"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="includeTerms">Only include listings containing the following terms (one term per line)</label>
+                        <p class="bg-info">Useful for finding static caravans, beach huts and other types of uncommon property.</p>
+                        <textarea class="form-control" id="includeTerms"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="excludePostcodes">Postcodes to exclude</label>
+                        <textarea class="form-control" id="excludePostcodes"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Price</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">£</div>
+                            <input class="small-control form-control" type="text" id="minimumPrice" placeholder="Minimum price...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">£</div>
+                            <input class="small-control form-control" type="text" id="maximumPrice" placeholder="Maximum price...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bedrooms</label>
+                        <div class="input-group">
+                            <div class="input-group-addon beds">Min</div>
+                            <select id="minBeds" class="small-control form-control">
+                                <option value="-1">Any</option>
+                                <option value="0">Studio</option>
+                                <option value="1">1 bed</option>
+                                <option value="2">2 bed</option>
+                                <option value="3">3 bed</option>
+                                <option value="4">4 bed</option>
+                                <option value="5">5 bed</option>
+                                <option value="6">6 bed</option>
+                                <option value="7">7 bed</option>
+                                <option value="8">8 bed</option>
+                                <option value="9">9 bed</option>
+                                <option value="10">10 bed</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon beds">Max</div>
+                            <select id="maxBeds" class="small-control form-control">
+                                <option value="-1">Any</option>
+                                <option value="0">Studio</option>
+                                <option value="1">1 bed</option>
+                                <option value="2">2 bed</option>
+                                <option value="3">3 bed</option>
+                                <option value="4">4 bed</option>
+                                <option value="5">5 bed</option>
+                                <option value="6">6 bed</option>
+                                <option value="7">7 bed</option>
+                                <option value="8">8 bed</option>
+                                <option value="9">9 bed</option>
+                                <option value="10">10 bed</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="excludePriceOnApplication"> Exclude POA
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="excludeOffersInvited"> Exclude Offers Invited
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sortOrder">Sort order</label>
+                        <select id="sortOrder" class="small-control form-control">
+                            <option value="0">Lowest price</option>
+                            <option value="1">Newest listed</option>
+                            <option value="2">Closest to</option>
+                            <option value="3">Oldest listed</option>
+                            <option value="4">Highest price</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="small-control form-control" id="locationToSortBy" placeholder="Location..." />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Advertised for no more than</label>
+                        <select id="advertisedOnOrAfter" class="small-control form-control">
+                            <option value="0">Anytime</option>
+                            <option value="1">1 day</option>
+                            <option value="2">1 week</option>
+                            <option value="3">1 month</option>
+                            <option value="4">2 months</option>
+                            <option value="5">3 months</option>
+                            <option value="6">6 months</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Advertised for more than</label>
+                        <select id="advertisedForOrOver" class="small-control form-control">
+                            <option value="0">Anytime</option>
+                            <option value="1">1 day</option>
+                            <option value="2">1 week</option>
+                            <option value="3">1 month</option>
+                            <option value="4">2 months</option>
+                            <option value="5">3 months</option>
+                            <option value="6">6 months</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="excludeTerms">Explicitly excluded listings</label>
+                        <p class="bg-info">One property listing URL per line</p>
+                        <textarea class="form-control" id="excludeTerms"></textarea>
+                    </div>
+
+                    <div class="form-group text-right">
+                        <input class="btn btn-primary" type="button" id="saveButton" value="Save" />
+                        <input class="btn btn-primary" type="button" id="cancelButton" value="Cancel" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function toggleLocationInput() {
+            var selectedSortOrder = $("#sortOrder").children("option:selected").val();
+            console.log(selectedSortOrder);
+            if (selectedSortOrder == "2") {
+                $("#locationToSortBy").show();
+            }
+            else {
+                $("#locationToSortBy").hide();
+            }
+        }
+
+        $(document).ready(function () {
+            (async function () {
+                await CefSharp.BindObjectAsync("shotlistEditor");
+            })();
+
+            toggleLocationInput();
+            $("#sortOrder").change(function () {
+                toggleLocationInput();
+            });
+
+            $("#saveButton").click(function () {
+                shotlistEditor.save({
+                    name: $("#name").val(),
+                    excludeTerms: $("#excludeTerms").val(),
+                    includeTerms: $("#includeTerms").val(),
+                    excludePostcodes: $("#excludePostcodes").val(),
+                    minimumPrice: $("#minimumPrice").val(),
+                    maximumPrice: $("#maximumPrice").val(),
+                    advertisedOnOrAfter: $("#advertisedOnOrAfter").val(),
+                    advertisedForOrOver: $("#advertisedForOrOver").val(),
+                    sortOrder: $("#sortOrder").val(),
+                    locationToSortBy: $("#locationToSortBy").val(),
+                    excludePriceOnApplication: $("#excludePriceOnApplication").is(":checked"),
+                    excludeOffersInvited: $("#excludeOffersInvited").is(":checked")
+                });
+            });
+
+            $("#cancelButton").click(function () {
+                shotlistEditor.cancel();
+            });
+        });
+    </script>
+</body>
+</html>
